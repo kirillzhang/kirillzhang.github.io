@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中俄翻译 | 个人主页</title>
+  <style>
+    body { margin:0; font-family:"Helvetica Neue", Arial; background:#f5f5f5; color:#333; }
+
+    header {
+      position:fixed; top:0; width:100%;
+      background:rgba(255,255,255,0.65); /* 提高透明度 */
+      backdrop-filter:blur(12px);
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 40px; z-index:1000;
+    }
+
+    .logo{font-size:20px;font-weight:bold;}
+    nav a{margin-left:20px;text-decoration:none;color:#333;font-size:14px;}
+
+    section{padding:90px 40px;max-width:1000px;margin:auto;}
+    .tight{padding-top:40px;} /* 缩短间距 */
+
+    .hero{display:flex;align-items:center;gap:40px;}
+    .hero img{width:200px;border-radius:50%;border:6px solid #fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+
+    .btn{display:inline-block;margin-top:15px;padding:10px 18px;background:#0b3d91;color:#fff;border-radius:6px;text-decoration:none;font-size:14px;transition:0.3s;}
+    .btn:hover{background:#082c6c;}
+
+    .card{position:relative;background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);margin-bottom:20px;transition:0.3s;overflow:hidden;}
+    .card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(0,0,0,0.12);}    
+
+    .card::before{
+      content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+      background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,0.4), transparent 40%);
+      opacity:0;transition:0.3s;
+    }
+    .card:hover::before{opacity:1;}
+
+    .fade-in{opacity:0;transform:translateY(40px);transition:0.8s;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}    
+    .delay-1{transition-delay:0.1s;} .delay-2{transition-delay:0.2s;}
+
+    /* 轮播 */
+    .carousel{position:relative;overflow:hidden;border-radius:12px;margin-top:20px;}
+    .carousel-track{display:flex;transition:0.5s;}
+    .carousel img{width:100%;flex-shrink:0;}
+
+    footer{text-align:center;padding:20px;font-size:12px;color:#888;}
+
+    .lang-switch{cursor:pointer;margin-left:20px;font-size:12px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">你的名字</div>
+  <nav>
+    <a href="#about" data-zh="关于我" data-ru="Обо мне">关于我</a>
+    <a href="#cases" data-zh="翻译案例" data-ru="Проекты">翻译案例</a>
+    <a href="#services" data-zh="服务" data-ru="Услуги">服务</a>
+    <a href="#contact" data-zh="联系" data-ru="Контакты">联系</a>
+    <span class="lang-switch" onclick="toggleLang()">RU</span>
+  </nav>
+</header>
+
+<section class="hero fade-in" id="about">
+  <img src="your-photo.jpg">
+  <div class="fade-in delay-1">
+    <h1 data-zh="中俄翻译 | 会议口译 / 笔译" data-ru="Китайско-русский переводчик">中俄翻译 | 会议口译 / 笔译</h1>
+    <p data-zh="专业从事外交、教育、科技翻译" data-ru="Профессиональный переводчик в сфере дипломатии">专业从事外交、教育、科技翻译</p>
+    <a href="resume.pdf" class="btn" data-zh="下载简历" data-ru="Скачать резюме">下载简历</a>
+  </div>
+</section>
+
+<section id="cases" class="fade-in">
+  <h2 data-zh="翻译案例" data-ru="Проекты">翻译案例</h2>
+  <div class="card fade-in delay-1">会议口译案例</div>
+  <div class="card fade-in delay-2">外交文件翻译</div>
+
+  <!-- 轮播 -->
+  <div class="carousel fade-in delay-2">
+    <div class="carousel-track" id="track">
+      <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg"><img src="7.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="services" class="fade-in tight">
+  <h2 data-zh="服务内容" data-ru="Услуги">服务内容</h2>
+  <div class="card">会议口译 / 文件翻译</div>
+</section>
+
+<section id="contact" class="fade-in tight">
+  <h2 data-zh="联系方式" data-ru="Контакты">联系方式</h2>
+  <div class="card">邮箱 / 微信</div>
+</section>
+
+<footer>© 2026</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('visible')})});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// 光影
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--x',((e.clientX-r.left)/r.width)*100+'%');
+    card.style.setProperty('--y',((e.clientY-r.top)/r.height)*100+'%');
+  });
+});
+
+// 轮播
+let index=0;
+setInterval(()=>{
+  const track=document.getElementById('track');
+  index=(index+1)%7;
+  track.style.transform=`translateX(-${index*100}%)`;
+},3000);
+
+// 双语
+let isRU=false;
+function toggleLang(){
+  isRU=!isRU;
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    el.innerText=isRU?el.dataset.ru:el.dataset.zh;
+  });
+}
+</script>
+
+</body>
+</html>
