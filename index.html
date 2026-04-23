@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中俄翻译 | 张宏江</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--text:#1f2937;--primary:#1e3a8a;--bg:#ffffff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--text)}
+
+    /* NAV */
+    .nav-wrap{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,0.7);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+    nav{
+      max-width:1000px;margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 20px;
+    }
+    .brand{font-weight:600;font-size:16px}
+    .menu{display:flex;align-items:center;gap:18px}
+    .menu a{font-size:14px;color:var(--text);text-decoration:none}
+    .lang{cursor:pointer;color:var(--primary);font-size:13px}
+
+    /* SECTIONS */
+    section{max-width:1000px;margin:0 auto;padding:80px 20px}
+
+    /* HERO */
+    .hero{display:flex;align-items:center;gap:50px;flex-wrap:wrap}
+    .hero img{
+      width:250px;height:250px;border-radius:50%;object-fit:cover;
+      background:#fff;padding:6px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.15);
+      transition:.3s;
+    }
+    .hero img:hover{transform:scale(1.05)}
+    .hero-text{max-width:600px}
+    .hero-text h1{margin:0;font-size:30px}
+    .hero-text p{margin-top:16px;color:#555;line-height:1.8}
+
+    .btn{
+      display:inline-block;margin-top:15px;
+      background:var(--primary);color:#fff;
+      padding:10px 16px;border-radius:6px;text-decoration:none;font-size:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.15);
+      transition:.25s;
+    }
+    .btn:hover{transform:scale(1.05);box-shadow:0 10px 25px rgba(0,0,0,0.2)}
+
+    /* PORTFOLIO */
+    .carousel{overflow:hidden;margin-top:30px}
+    .track{display:flex;gap:15px;width:max-content;animation:scroll 25s linear infinite}
+    .track img{
+      width:366px;height:250px;object-fit:cover;border-radius:12px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.1);
+      transition:.3s;
+    }
+    .track img:hover{transform:scale(1.05)}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    .right-btn{text-align:right;margin-top:15px}
+
+    /* SERVICES */
+    .grid{display:grid;gap:10px}
+
+    footer{text-align:center;padding:40px;color:#888;font-size:13px}
+  </style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav>
+    <div class="brand" id="name">张宏江 Кирилл Чжан</div>
+    <div class="menu">
+      <a href="#hero" id="nav_home"></a>
+      <a href="#portfolio" id="nav_portfolio">翻译案例</a>
+      <a href="#services" id="nav_services">联系方式</a>
+      <span class="lang" onclick="setLang('zh')">中文</span>
+      <span class="lang" onclick="setLang('ru')">РУ</span>
+    </div>
+  </nav>
+</div>
+
+<!-- PAGE 1 -->
+<section id="hero">
+  <div class="hero">
+    <img src="profile.jpg" alt="证件照">
+    <div class="hero-text">
+      <h1 id="title">中俄翻译｜教育国际交流合作｜出国留学</h1>
+      <p id="about_text">本人具备扎实的俄语语言功底，持有翻译专业资格（CATTI）二级证书，俄语专业八级和俄罗斯国家语言等级证书（ТРКИ2），可熟练开展俄汉双向笔译与口译工作。擅长领域包括教育合作、国际交流、商务沟通及正式文本翻译，能够为客户提供专业、准确且具备实际沟通价值的语言服务。
+</p>
+      <a href="cv.pdf" class="btn" id="cv">下载我的简历</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="portfolio">
+  <h2 id="portfolio_title">翻译案例</h2>
+  <div class="carousel">
+    <div class="track">
+      <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg"><img src="img4.jpg"><img src="img5.jpg"><img src="img6.jpg"><img src="img7.jpg">
+      <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg"><img src="img4.jpg"><img src="img5.jpg"><img src="img6.jpg"><img src="img7.jpg">
+    </div>
+  </div>
+  <div class="right-btn">
+    <a href="sample.pdf" class="btn" id="download">下载翻译作品</a>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section id="services">
+  <h2 id="services_title">提供服务</h2>
+  <div class="grid" id="services_list">
+    <div>笔译：中 ⇄ 俄     口译：会议与商务</div>
+    <div>口译：会议与商务</div>
+    <div>俄汉笔译（合同 / 公文 / 教育材料）、商务陪同口译、国际会议 / 展会翻译、留学及教育项目相关翻译</div>
+    <div> ✔ CATTI二级｜俄语专八｜ТРКИ2</div>
+    <div> ✔ 高校国际合作经验</div>
+    <div> ✔ 多次参与中俄、中哈、中乌高校及机构交流项目</div>
+    <div> </div>
+    
+  <h2 id="services_title">联系方式</h2>
+  <div class="grid" id="services_list">
+    <div>Email：kirillzhang@126.com</div>
+    <div>电话（微信）：+86-15221073637</div>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Все еще впереди.  张宏江 Кирилл Чжан</p>
+</footer>
+
+<script>
+const content={
+ zh:{
+  nav_home:"首页",nav_portfolio:"案例",nav_services:"服务",
+  title:"中俄翻译｜学术与国际交流",
+  about_text:"专业中俄翻译，专注高校合作、政府交流与学术研究领域，提供高标准语言服务。可承接国际合作项目及高端翻译任务。",
+  portfolio_title:"翻译案例",
+  services_title:"服务与联系",
+  cv:"下载我的简历",
+  download:"下载翻译作品",
+  contact:"发送邮件"
+ },
+ ru:{
+  nav_home:"Главная",nav_portfolio:"Портфолио",nav_services:"Услуги",
+  title:"Переводчик китайского и русского языков",
+  about_text:"Профессиональный переводчик китайского и русского языков. Специализация: международные проекты.",
+  portfolio_title:"Портфолио",
+  services_title:"Услуги и контакты",
+  cv:"Скачать резюме",
+  download:"Скачать переводы",
+  contact:"Написать письмо"
+ }
+}
+function setLang(lang){
+ let d=content[lang];
+ document.getElementById('nav_home').innerText=d.nav_home;
+ document.getElementById('nav_portfolio').innerText=d.nav_portfolio;
+ document.getElementById('nav_services').innerText=d.nav_services;
+ document.getElementById('title').innerText=d.title;
+ document.getElementById('about_text').innerText=d.about_text;
+ document.getElementById('portfolio_title').innerText=d.portfolio_title;
+ document.getElementById('services_title').innerText=d.services_title;
+ document.getElementById('cv').innerText=d.cv;
+ document.getElementById('download').innerText=d.download;
+ document.getElementById('contact').innerText=d.contact;
+}
+</script>
+
+</body>
+</html>
